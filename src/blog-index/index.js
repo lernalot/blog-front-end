@@ -39,6 +39,14 @@ export default class BlogContainer extends Component {
 		this.setState({
 			aceBoxH: document.documentElement.clientHeight - document.querySelector('.edit-header').offsetHeight + 'px'
 		})
+		this.setState({
+			previewContent: marked(text)
+		})
+	}
+	toggle = () => {
+		this.setState({
+			collapsed: !this.state.collapsed,
+		});
 	}
 
 	cacheValue() {
@@ -115,9 +123,9 @@ export default class BlogContainer extends Component {
 								<input type="text" className="title-input" placeholder="输入文章标题..." spellCheck="false"/>
 							</header>
 							<div className="editor-main-a" ref={node=>this.aceBox = node} style={{height: state.aceBoxH}} key='main'>
-								<div className="common-container editor-container" onMouseOver={this.setCurrentIndex.bind(this, 1)} onScroll={this.containerScroll} ref={node=>this.editContainer=node}>
-									<div contentEditable="plaintext-only" name="editor-wrapper" id="editor-wrapper" className="common-wrapper editor-wrapper" onInput={this.onContentChange} ref={node=>this.editWrap=node}></div>
-								</div>
+								{/*<div className="common-container editor-container" onMouseOver={this.setCurrentIndex.bind(this, 1)} onScroll={this.containerScroll} ref={node=>this.editContainer=node}>*/}
+									{/*<div contentEditable="plaintext-only" name="editor-wrapper" id="editor-wrapper" className="common-wrapper editor-wrapper" onInput={this.onContentChange} ref={node=>this.editWrap=node}></div>*/}
+								{/*</div>*/}
 								<div className="common-container preview-container" ref={node=>this.previewContainer=node} onMouseOver={this.setCurrentIndex.bind(this, 2)} onScroll={this.containerScroll}>
 									<div className="markdown-body common-wrapper preview-wrapper" ref={node=>this.previewWrap=node} dangerouslySetInnerHTML={{__html: state.previewContent}}></div>
 								</div>
