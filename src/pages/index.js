@@ -12,7 +12,6 @@ export default class IndexLayOut extends React.Component {
 	render(){
 		return(
 			<React.Fragment>
-				<div>index</div>
 				<Switch>
 					<Route exact path="/list" component={ BlogList }/>
 					<Route exact path="/blog" component={ BlogIndex }/>
